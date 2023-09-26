@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://7rotx6sj06c6"]
+
+[ext_resource type="Script" path="res://weapon.gd" id="1_vd6j2"]
+[ext_resource type="Texture2D" uid="uid://ckht46cehrygy" path="res://pictures/halberd_oma_v2.png" id="2_niavc"]
+
+[node name="Weapon" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource("1_vd6j2")
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+position = Vector2(16, -15)
+texture = ExtResource("2_niavc")
+
+[node name="WeaponHitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(-44, 15)
+polygon = PackedVector2Array(69, -42, 68, -30, 75, -30, 80, -32, 84, -37, 84, -46, 74, -44, 78, -48, 81, -53)

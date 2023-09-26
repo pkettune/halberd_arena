@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://debpemh102rl1"]
+
+[ext_resource type="PackedScene" uid="uid://bfj64ghpbakjs" path="res://arena.tscn" id="1_y0b0d"]
+[ext_resource type="PackedScene" uid="uid://bss165o1gdb1g" path="res://player.tscn" id="2_8axoe"]
+[ext_resource type="PackedScene" uid="uid://ds7ysl744osi7" path="res://HUD.tscn" id="3_exrj4"]
+[ext_resource type="PackedScene" uid="uid://17wq1ymlsdlq" path="res://enemy.tscn" id="4_fobr8"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Arena" parent="." instance=ExtResource("1_y0b0d")]
+light_mask = 0
+
+[node name="Player" parent="." instance=ExtResource("2_8axoe")]
+
+[node name="HUD" parent="." instance=ExtResource("3_exrj4")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_fobr8")]
+position = Vector2(174, 222)

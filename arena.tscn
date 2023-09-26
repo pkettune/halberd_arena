@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfj64ghpbakjs"]
+
+[ext_resource type="Script" path="res://arena.gd" id="1_fqcnn"]
+[ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://icon.svg" id="2_xvgah"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iu87"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_fqcnn")
+
+[node name="Floor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Edges" type="CollisionPolygon2D" parent="Floor"]
+show_behind_parent = true
+position = Vector2(40, 40)
+polygon = PackedVector2Array(540, 0, 580, 20, 600, 60, 600, 540, 580, 580, 540, 600, 60, 600, 20, 580, 0, 540, 0, 60, 19.6536, 20.3464, 60, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(340, 340)
+scale = Vector2(42, 42)
+shape = SubResource("CircleShape2D_0iu87")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(340, 340)
+scale = Vector2(4.6875, 4.6875)
+texture = ExtResource("2_xvgah")
+
+[connection signal="body_exited" from="Floor" to="." method="_on_floor_body_exited"]
