@@ -3,11 +3,7 @@
 [ext_resource type="Script" path="res://weapon.gd" id="1_vd6j2"]
 [ext_resource type="Texture2D" uid="uid://ckht46cehrygy" path="res://pictures/halberd_oma_v2.png" id="2_niavc"]
 
-[node name="Weapon" type="RigidBody2D"]
-collision_layer = 3
-collision_mask = 3
-mass = 0.01
-gravity_scale = 0.0
+[node name="Weapon" type="CharacterBody2D"]
 script = ExtResource("1_vd6j2")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

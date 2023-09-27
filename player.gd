@@ -5,8 +5,6 @@ extends Node2D
 
 @onready var crosshair = $Crosshair/CrosshairSprite
 
-var player_direction: int = 0
-var sens = 30
 var aim_radius = 45
 var deadzone = 0.2
 
@@ -40,30 +38,11 @@ func _physics_process(delta):
 	var aim_direction = Vector2(aim_radius, 0)
 	crosshair.position = aim_direction * 2
 	
-	var aim_movement = sens * aim_direction
 
+#	var controllerangle = Vector2.ZERO
+#	controllerangle = Vector2(aim_direction.x, aim_direction.y).angle()
+#	crosshair.rotation = controllerangle
 
-
-
-
-#	var aim_direction: Vector2
-#	crosshair.position = (-self.position + get_local_mouse_position())
-#	crosshair.position = self.get_local_mouse_position().normalized() * aim_radius
-#
-#	aim_direction.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
-#	aim_direction.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-#	aim_direction = aim_direction.normalized()
-#
-##	abs removes negative values so controller works properly
-#	if abs(aim_direction.x) > 0 and abs(aim_direction.y) > 0:
-#		var controllerangle = Vector2.ZERO
-#		controllerangle = Vector2(aim_direction.x, aim_direction.y).angle()
-#		crosshair.rotation = controllerangle
-#
-#	if abs(crosshair.position.y - self.position.y) <= 0.05 or abs(crosshair.position.x - self.position.x) <= 0.05:
-#		crosshair.position = self.get_local_mouse_position().normalized() * aim_radius
-#
-#
 #	var aim_movement = sens * aim_direction
 #	if (aim_direction):
 #		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
