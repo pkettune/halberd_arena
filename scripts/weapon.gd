@@ -18,6 +18,8 @@ func _physics_process(delta):
 		elapsed += delta * 1
 		rotation_degrees = 45
 		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed)
+		if (position < Vector2(-25.0, 0.0)):
+			position = Vector2(-25.0, 0.0)
 	
 	if Input.is_action_just_released("throw"):
 		elapsed = 15 * delta

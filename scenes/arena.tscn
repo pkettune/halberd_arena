@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfj64ghpbakjs"]
 
-[ext_resource type="Script" path="res://arena.gd" id="1_fqcnn"]
-[ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://icon.svg" id="2_xvgah"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_fqcnn"]
+[ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_xvgah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iu87"]
 

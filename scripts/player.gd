@@ -1,9 +1,7 @@
 extends Node2D
 
 @export var weapon: Node
-#@export var crosshair: Node
-
-@onready var crosshair = $Crosshair/CrosshairSprite
+@export var crosshair: Node
 
 var aim_radius = 45
 var deadzone = 0.2
