@@ -2,10 +2,10 @@ extends Node2D
 
 @export var weapon: Node
 @export var crosshair: Node
+@export var speed: int = 200
 
 var aim_radius = 45
 var deadzone = 0.2
-
 
 func _ready():
 	InputMap.action_set_deadzone("aim_up", deadzone)
@@ -20,7 +20,7 @@ func _ready():
 	
 func _physics_process(delta):
 	var player_direction = Input.get_vector("left", "right", "up", "down")
-	position += player_direction * 200 * delta
+	position += player_direction * speed * delta
 
 	look_at(get_global_mouse_position())
 #	if (Input.mouse_mode):

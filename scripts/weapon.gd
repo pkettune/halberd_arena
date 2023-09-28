@@ -22,9 +22,13 @@ func _physics_process(delta):
 			position = Vector2(-25.0, 0.0)
 	
 	if Input.is_action_just_released("throw"):
-		elapsed = 15 * delta
+		throw(Vector2(50, 20), 200)
+	
+func throw(direction : Vector2, power : int):
+	pass
 		
-		var collision_info = move_and_collide(velocity.normalized() * delta * speed)
+
+#		var collision_info = move_and_collide(velocity.normalized() * delta * speed)
 		
 #		position = lerp(Vector2.ZERO, Vector2(500, 0), elapsed)
 #		$WeaponSprite.look_at(get_global_mouse_position())
