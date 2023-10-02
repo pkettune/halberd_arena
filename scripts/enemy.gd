@@ -7,7 +7,7 @@ var enemy = self
 var player_position
 var target_position
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	player_position = player.position
 	target_position = (player_position - enemy.position).normalized()

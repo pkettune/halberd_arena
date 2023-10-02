@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 var elapsed = 0.0
 var speed = 300
+var throw_speed = 1
+var power_up_speed = 0.8
 
 func _ready():
 	position = Vector2.ZERO
@@ -26,7 +28,6 @@ func _physics_process(delta):
 		anim_player.speed_scale = 1
 		anim_player.play("power_up")
 
-		var power_up_speed = 0.8
 		rotation_degrees = 45
 		elapsed += delta * 1
 		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed * power_up_speed)
@@ -35,8 +36,16 @@ func _physics_process(delta):
 		if (position <= Vector2(-26.0, 0.0)):
 			position = Vector2(-25.0, 0.0)
 			_on_animation_player_animation_finished("power_up")
+			
+			
 	if Input.is_action_just_released("throw"):
-		pass
+		var tween = create_tween()
+		for sprite in get_children():
+			tween.tween_property(sprite, "position", get_local_mouse_position(), 0.1)
+
+#		elapsed += delta * 0.1
+#		position = lerp(Vector2(0, 0), Vector2(200.0, 0.0), elapsed * delta)
+		print(position)
 
 func _on_animation_player_animation_finished(anim_name):
 	anim_player.speed_scale = 0
