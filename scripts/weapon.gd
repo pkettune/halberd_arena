@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim_player = $AnimationPlayer
 
+
 var elapsed = 0.0
 var speed = 300
 
@@ -29,20 +30,19 @@ func _physics_process(delta):
 		rotation_degrees = 45
 		elapsed += delta * 1
 		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed * power_up_speed)
-		if (position < Vector2(-25.0, 0.0)):
+		if position == Vector2(-26.0, 0.0):
+			$AudioStreamPlayer2D.play()
+		if (position <= Vector2(-26.0, 0.0)):
 			position = Vector2(-25.0, 0.0)
 			_on_animation_player_animation_finished("power_up")
-		
 	if Input.is_action_just_released("throw"):
 		pass
 
-
 func _on_animation_player_animation_finished(anim_name):
 	anim_player.speed_scale = 0
-	#####PPLLAAAYYYYY SOUUUND ZING!
-	#####FUlL POWER !!!!!!!!
 
-	
+
+	#####FUlL POWER !!!!!!!!
 
 	
 	
