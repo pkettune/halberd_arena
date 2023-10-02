@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
 @onready var anim_player = $AnimationPlayer
-@onready var attack_sprites = $WeaponSprite
 
 var elapsed = 0.0
 var speed = 300
 
-
 func _ready():
 	position = Vector2.ZERO
-	var direction := Vector2.ZERO
-	
 
 func _physics_process(delta):
 
@@ -26,21 +22,25 @@ func _physics_process(delta):
 		rotation = 0
 		
 	if Input.is_action_pressed("throw"):
+		anim_player.speed_scale = 1
 		anim_player.play("power_up")
-#
-#		if $AnimationPlayer.current_animation:
-#			anim_player.stop()
-			
-		var wind_up_speed = 0.8
-		rotation_degrees = 45
 
+		var power_up_speed = 0.8
+		rotation_degrees = 45
 		elapsed += delta * 1
-		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed * wind_up_speed)
-		if (position < Vector2(-25.0, 0.0)): position = Vector2(-25.0, 0.0)
+		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed * power_up_speed)
+		if (position < Vector2(-25.0, 0.0)):
+			position = Vector2(-25.0, 0.0)
+			_on_animation_player_animation_finished("power_up")
 		
 	if Input.is_action_just_released("throw"):
-		anim_player.stop()
 		pass
+
+
+func _on_animation_player_animation_finished(anim_name):
+	anim_player.speed_scale = 0
+	#####PPLLAAAYYYYY SOUUUND ZING!
+	#####FUlL POWER !!!!!!!!
 
 	
 
