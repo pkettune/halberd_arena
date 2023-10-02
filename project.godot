@@ -17,8 +17,8 @@ config/icon="res://pictures/icon.svg"
 
 [display]
 
-window/size/viewport_width=680
-window/size/viewport_height=680
+window/size/viewport_width=720
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
 [input]
@@ -79,6 +79,13 @@ aim_down={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="PLAYER"
+2d_physics/layer_2="WEAPON"
+2d_physics/layer_3="ENEMY"
+2d_physics/layer_4="ARENA"
 
 [rendering]
 

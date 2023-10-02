@@ -1,21 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bss165o1gdb1g"]
+[gd_scene load_steps=5 format=3 uid="uid://bss165o1gdb1g"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fli1f"]
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_br26d"]
-[ext_resource type="PackedScene" uid="uid://7rotx6sj06c6" path="res://scenes/weapon.tscn" id="3_8x0ij"]
 [ext_resource type="Texture2D" uid="uid://s5ymxgirvhss" path="res://pictures/crosshair.png" id="5_sky78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcdnn"]
 size = Vector2(16, 36)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("weapon", "crosshair")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
 position = Vector2(347, 370)
 script = ExtResource("1_fli1f")
-weapon = NodePath("Weapon")
 crosshair = NodePath("Crosshair/CrosshairSprite")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
+collision_mask = 0
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="PlayerBody"]
 shape = SubResource("RectangleShape2D_tcdnn")
@@ -23,10 +22,6 @@ shape = SubResource("RectangleShape2D_tcdnn")
 [node name="PlayerSprite" type="Sprite2D" parent="PlayerBody"]
 scale = Vector2(0.15625, 0.3125)
 texture = ExtResource("2_br26d")
-
-[node name="Weapon" parent="." instance=ExtResource("3_8x0ij")]
-collision_layer = 2
-collision_mask = 2
 
 [node name="Crosshair" type="Node2D" parent="."]
 

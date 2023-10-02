@@ -3,8 +3,7 @@ extends Node2D
 @export var weapon: Node
 @export var crosshair: Node
 @export var speed: int = 200
-
-var aim_radius = 45
+@export var aim_radius: int = 120
 var deadzone = 0.2
 
 func _ready():
@@ -34,7 +33,7 @@ func _physics_process(delta):
 	look_at(position + look_vector.normalized())
 	
 	var aim_direction = Vector2(aim_radius, 0)
-	crosshair.position = aim_direction * 2
+	crosshair.position = aim_direction
 	
 
 #	var controllerangle = Vector2.ZERO
