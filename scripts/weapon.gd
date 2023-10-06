@@ -6,7 +6,7 @@ extends Node2D
 var elapsed = 0.0
 var speed = 300
 var throw_speed = 1
-var power_up_speed = 0.8
+var power_up_speed = 1.5
 
 func _ready():
 	position = Vector2.ZERO
@@ -26,30 +26,20 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("throw"):
 		position = Vector2.ZERO
-		
+
 	if Input.is_action_pressed("throw"):
 		anim_player.speed_scale = 1
 		anim_player.play("power_up")
 
 		rotation_degrees = 45
 		elapsed += delta * 1
-		position = lerp(Vector2(0, 0), Vector2(-50, 0), elapsed * power_up_speed)
-		if position == Vector2(-26.0, 0.0):
+		position = lerp(Vector2(1, 0), Vector2(-25, 0), elapsed * power_up_speed)
+		if position == Vector2(-25.0, 0.0):
 			$AudioStreamPlayer2D.play()
-		if (position <= Vector2(-26.0, 0.0)):
-			position = Vector2(-25.0, 0.0)
+		if (position <= Vector2(-25.0, 0.0)):
+			position = Vector2(-27.0, -0.5)
 			_on_animation_player_animation_finished("power_up")
-			
-			
-	if Input.is_action_just_released("throw"):
-		var tween = create_tween()
-		for sprite in get_children():
-			tween.tween_property(sprite, "position", get_local_mouse_position(), 0.1)
-			tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
-#		position = Vector2.ZERO
-#		elapsed += delta * 0.1
-#		position = lerp(Vector2(0, 0), Vector2(200.0, 0.0), elapsed * delta)
-		print(position)
 
-func _on_animation_player_animation_finished(anim_name):
+
+func _on_animation_player_animation_finished(_anim_name):
 	anim_player.speed_scale = 0

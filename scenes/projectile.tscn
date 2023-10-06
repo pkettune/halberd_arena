@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5lc03k6a22oi"]
+[gd_scene load_steps=4 format=3 uid="uid://chcc0esdq1u3j"]
 
-[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_7h13x"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_vhnxs"]
 [ext_resource type="Texture2D" uid="uid://bcgadixvfrpv" path="res://pictures/aurinkoon3.png" id="2_506mh"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bhoju"]
-a = Vector2(46.0571, -34.9398)
+a = Vector2(45.5533, -34.2356)
+b = Vector2(-0.676033, 11.7951)
 
 [node name="Projectile" type="Node2D"]
-script = ExtResource("1_7h13x")
-
-[node name="SpearSprite" type="Sprite2D" parent="."]
-position = Vector2(-50.0495, -44.3427)
-texture = ExtResource("2_506mh")
+script = ExtResource("1_vhnxs")
 
 [node name="Spear" type="CharacterBody2D" parent="."]
-position = Vector2(-50.0495, -44.3427)
+rotation = 0.785398
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spear"]
-position = Vector2(-6, -1)
-scale = Vector2(0.631445, 0.641369)
+position = Vector2(-22.5777, 11.0606)
 shape = SubResource("SegmentShape2D_bhoju")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="SpearSprite" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(1, 1)
+texture = ExtResource("2_506mh")

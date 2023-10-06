@@ -41,6 +41,7 @@ func _process(delta):
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 4
 
@@ -52,7 +53,6 @@ polygon = PackedVector2Array(65, -46, 68, -30, 75, -30, 80, -32, 84, -37, 84, -4
 position = Vector2(16, -15)
 texture = ExtResource("2_bj3mr")
 hframes = 8
-frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Halberd")
@@ -60,9 +60,6 @@ libraries = {
 "": SubResource("AnimationLibrary_vxikn")
 }
 script = SubResource("GDScript_uxfir")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(219, -218)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_vd3bw")

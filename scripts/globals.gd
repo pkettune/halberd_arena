@@ -1,3 +1,4 @@
 extends Node
 
-pass
+func _process(_delta):
+	pass

@@ -8,9 +8,9 @@
 size = Vector2(16, 36)
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
-position = Vector2(347, 370)
 script = ExtResource("1_fli1f")
 crosshair = NodePath("Crosshair/CrosshairSprite")
+aim_radius = 80
 metadata/_edit_horizontal_guides_ = []
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
@@ -24,7 +24,13 @@ scale = Vector2(0.15625, 0.3125)
 texture = ExtResource("2_br26d")
 
 [node name="Crosshair" type="Node2D" parent="."]
+position = Vector2(-17.1026, -0.33371)
+scale = Vector2(2, 2)
 
 [node name="CrosshairSprite" type="Sprite2D" parent="Crosshair"]
-scale = Vector2(2, 2)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_sky78")
+
+[node name="ShootPosition" type="Marker2D" parent="."]
+position = Vector2(11.5869, -0.00113487)
+scale = Vector2(1.1, 1.1)
