@@ -22,11 +22,7 @@ func _physics_process(delta):
 	position += player_direction * speed * delta
 
 	look_at(get_global_mouse_position())
-#	if (Input.mouse_mode):
-#		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-#		Input.warp_mouse(get_viewport().get_mouse_position() + aim_movement)
-#	crosshair.position = self.get_local_mouse_position().normalized() * aim_radius
-	
+
 	var look_vector = Vector2.ZERO
 	look_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
 	look_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
@@ -35,13 +31,3 @@ func _physics_process(delta):
 	var aim_direction = Vector2(aim_radius, 0)
 	crosshair.position = aim_direction
 	
-
-#	var controllerangle = Vector2.ZERO
-#	controllerangle = Vector2(aim_direction.x, aim_direction.y).angle()
-#	crosshair.rotation = controllerangle
-
-#	var aim_movement = sens * aim_direction
-#	if (aim_direction):
-#		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-#		Input.warp_mouse(get_viewport().get_mouse_position() + aim_movement)
-#

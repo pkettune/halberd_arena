@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 @onready var anim_player = $AnimationPlayer
 
@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("throw"):
 		var tween = create_tween()
 		for sprite in get_children():
-			tween.tween_property(sprite, "position", get_local_mouse_position() * 1, 0.1)
+			tween.tween_property(sprite, "position", get_local_mouse_position(), 0.1)
 			tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
 #		position = Vector2.ZERO
 #		elapsed += delta * 0.1
@@ -53,20 +53,3 @@ func _physics_process(delta):
 
 func _on_animation_player_animation_finished(anim_name):
 	anim_player.speed_scale = 0
-
-
-	#####FUlL POWER !!!!!!!!
-
-	
-	
-#func throw(int):
-#
-#
-#	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
-#
-#	position = lerp(Vector2.ZERO, Vector2(500, 0), elapsed)
-#	$WeaponSprite.look_at(get_global_mouse_position())
-#	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
-#
-
-
