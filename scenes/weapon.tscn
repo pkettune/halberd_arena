@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://7rotx6sj06c6"]
+[gd_scene load_steps=9 format=3 uid="uid://7rotx6sj06c6"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_vd6j2"]
 [ext_resource type="Texture2D" uid="uid://cbhu528f3l6kg" path="res://pictures/aurinkoon2.png" id="2_bj3mr"]
 [ext_resource type="AudioStream" uid="uid://cy7jwm7ncti62" path="res://bling2.wav" id="3_vd3bw"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yj8vd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d643"]
+radius = 11.0633
+height = 67.428
 
 [sub_resource type="Animation" id="Animation_g840r"]
 resource_name = "power_up"
@@ -41,18 +46,24 @@ func _process(delta):
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 2
-collision_mask = 4
-
-[node name="WeaponHitbox" type="CollisionPolygon2D" parent="Halberd"]
-position = Vector2(-45, 17)
-polygon = PackedVector2Array(65, -46, 68, -30, 75, -30, 80, -32, 84, -37, 84, -46, 74, -44, 78, -48, 85, -56)
+collision_layer = 0
+collision_mask = 34
 
 [node name="WeaponSprite" type="Sprite2D" parent="Halberd"]
 position = Vector2(16, -15)
 texture = ExtResource("2_bj3mr")
 hframes = 8
+
+[node name="HitBox" type="Area2D" parent="Halberd"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_yj8vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Halberd/HitBox"]
+position = Vector2(17.0089, -12.9142)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_7d643")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Halberd")

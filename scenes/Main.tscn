@@ -13,10 +13,10 @@
 script = ExtResource("1_3pofc")
 
 [node name="Arena" parent="." instance=ExtResource("1_y0b0d")]
+visible = false
 script = ExtResource("3_b4noj")
 
 [node name="Enemy" parent="." instance=ExtResource("4_fobr8")]
-visible = false
 
 [node name="HUD" parent="." instance=ExtResource("3_exrj4")]
 

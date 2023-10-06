@@ -1,27 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://chcc0esdq1u3j"]
+[gd_scene load_steps=5 format=3 uid="uid://chcc0esdq1u3j"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_vhnxs"]
 [ext_resource type="Texture2D" uid="uid://bcgadixvfrpv" path="res://pictures/aurinkoon3.png" id="2_506mh"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="2_oute2"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_bhoju"]
-a = Vector2(45.5533, -34.2356)
-b = Vector2(-0.676033, 11.7951)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvkbn"]
+radius = 2.11649
+height = 67.6168
 
-[node name="Projectile" type="Node2D"]
-script = ExtResource("1_vhnxs")
-
-[node name="Spear" type="CharacterBody2D" parent="."]
+[node name="Spear" type="CharacterBody2D"]
 rotation = 0.785398
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_vhnxs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear"]
-position = Vector2(-22.5777, 11.0606)
-shape = SubResource("SegmentShape2D_bhoju")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-
-[node name="SpearSprite" type="Sprite2D" parent="."]
-rotation = 0.785398
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1, 1)
 texture = ExtResource("2_506mh")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_oute2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.258, -0.122)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_tvkbn")
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+position = Vector2(-0.258, -0.122)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_tvkbn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.097
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+rotation = -0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.258, -0.122)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_tvkbn")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_entered" from="ImpactDetector" to="." method="_on_impact_detector_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

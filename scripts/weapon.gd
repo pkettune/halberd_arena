@@ -1,3 +1,4 @@
+class_name Weapon
 extends Node2D
 
 @onready var anim_player = $AnimationPlayer
@@ -30,9 +31,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("throw"):
 		anim_player.speed_scale = 1
 		anim_player.play("power_up")
-
-		rotation_degrees = 45
+		
 		elapsed += delta * 1
+		rotation_degrees = 45
+		
 		position = lerp(Vector2(1, 0), Vector2(-25, 0), elapsed * power_up_speed)
 		if position == Vector2(-25.0, 0.0):
 			$AudioStreamPlayer2D.play()

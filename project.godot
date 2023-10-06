@@ -90,6 +90,8 @@ aim_down={
 2d_physics/layer_2="WEAPON"
 2d_physics/layer_3="ENEMY"
 2d_physics/layer_4="ARENA"
+2d_physics/layer_5="HITBOX"
+2d_physics/layer_6="HURTBOX"
 
 [rendering]
 

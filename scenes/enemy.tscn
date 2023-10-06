@@ -1,23 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgqmq6n48ndpq"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqmq6n48ndpq"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_o80ey"]
-[ext_resource type="Texture2D" uid="uid://bv6lk6oao6xmr" path="res://pictures/enemy.png" id="1_umnjv"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_tfr72"]
+[ext_resource type="Texture2D" uid="uid://mglti6ybt4m4" path="res://pictures/enemy_damage_sheet.png" id="4_2n0up"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptoty"]
+atlas = ExtResource("4_2n0up")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4juo"]
+atlas = ExtResource("4_2n0up")
+region = Rect2(132, 0, 132, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3i6eq"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ptoty")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_h4juo")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ptoty")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in4ph"]
+size = Vector2(28, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dydr7"]
-size = Vector2(26, 26)
+size = Vector2(28, 28)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(93, 30)
+scale = Vector2(3, 3)
 collision_layer = 4
-collision_mask = 7
+collision_mask = 0
 floor_stop_on_slope = false
 floor_block_on_wall = false
+platform_floor_layers = 0
 script = ExtResource("1_o80ey")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_3i6eq")
+animation = &"hurt"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(32, 30)
+scale = Vector2(1, 1)
+collision_layer = 0
+collision_mask = 48
+script = ExtResource("3_tfr72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-32, -30)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_in4ph")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.07288e-06, 1.07288e-06)
+position = Vector2(6.25849e-07, 2.563e-06)
 shape = SubResource("RectangleShape2D_dydr7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_umnjv")
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

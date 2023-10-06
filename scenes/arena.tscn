@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_xvgah"]
 
 [node name="Floor" type="Area2D"]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 0
+collision_mask = 0
 
 [node name="Edges" type="CollisionPolygon2D" parent="."]
 show_behind_parent = true
