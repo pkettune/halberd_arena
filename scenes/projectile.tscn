@@ -9,16 +9,16 @@ radius = 2.11649
 height = 67.6168
 
 [node name="Spear" type="CharacterBody2D"]
-rotation = 0.785398
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_vhnxs")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(1, 1)
+rotation = 0.785398
 texture = ExtResource("2_506mh")
 
 [node name="HitBox" type="Area2D" parent="."]
+rotation = 1.5708
 collision_layer = 16
 collision_mask = 0
 monitoring = false
@@ -26,29 +26,26 @@ script = ExtResource("2_oute2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.258, -0.122)
-rotation = 0.785397
 shape = SubResource("CapsuleShape2D_tvkbn")
 
 [node name="ImpactDetector" type="Area2D" parent="."]
+rotation = 1.5708
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
 position = Vector2(-0.258, -0.122)
-rotation = 0.785397
 shape = SubResource("CapsuleShape2D_tvkbn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.097
-autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-rotation = -0.785398
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.258, -0.122)
-rotation = 0.785397
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tvkbn")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

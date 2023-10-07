@@ -1,12 +1,9 @@
 extends Node2D
 
-const WeaponScene := preload("res://scenes/weapon.tscn")
-const ProjectileScene := preload("res://scenes/projectile.tscn")
-@onready var shoot_position = $ShootPosition
-
 @export var crosshair: Node
 @export var speed: int = 200
 @export var aim_radius: int = 100
+
 var deadzone = 0.2
 
 func _ready():
@@ -34,13 +31,3 @@ func _physics_process(delta):
 	
 	crosshair.position = Vector2(aim_radius, 0)
 	
-func _unhandled_input(event : InputEvent) -> void:
-	if Input.is_action_just_released("throw"):
-		shoot(ProjectileScene)
-
-func shoot(projectile:PackedScene) -> void:
-	var projectile_instance := projectile.instantiate()
-	projectile_instance.position = shoot_position.global_position
-	projectile_instance.direction = global_position.direction_to(projectile_instance.position)
-	add_child(projectile_instance)
-

@@ -6,7 +6,7 @@ extends Node2D
 @onready var sprite := $Sprite
 @onready var impact_detector := $ImpactDetector
 
-@export var speed := 1000.0
+@export var speed := 700.0
 @export var lifetime := 0.2
 var direction := Vector2.ZERO
 
@@ -19,7 +19,6 @@ func _on_timer_timeout():
 	
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
-	
 #	rotation += 1						JA TÄMÄ
 #	rotation = global_rotation_degrees     PYÖRII KU VÄKKYRS
 

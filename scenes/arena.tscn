@@ -1,18 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfj64ghpbakjs"]
+[gd_scene load_steps=5 format=3 uid="uid://bfj64ghpbakjs"]
 
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_vkwaa"]
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_xvgah"]
 
-[node name="Floor" type="Area2D"]
-collision_layer = 0
-collision_mask = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8y58"]
+size = Vector2(604, 601)
 
-[node name="Edges" type="CollisionPolygon2D" parent="."]
-show_behind_parent = true
-position = Vector2(60, 61)
-scale = Vector2(1.00718, 1.00823)
-polygon = PackedVector2Array(532.177, 8.92651, 570.899, 29.7551, 587.778, 65.4611, 587.778, 535.591, 567.92, 563.363, 536.148, 586.175, 61.5578, 586.175, 25.8145, 565.346, 7.94291, 535.591, 8.93578, 63.4775, 28.7931, 29.7551, 59.572, 8.92651)
+[sub_resource type="Curve2D" id="Curve2D_himlg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 795, -53, 0, 0, 0, 0, 796.224, 777.329, 0, 0, 0, 0, -59.2096, 773.836, 0, 0, 0, 0, -55.5382, -49.5063, 0, 0, 0, 0, 795, -53)
+}
+point_count = 5
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_vkwaa")
+
+[node name="Floor" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 15
+monitorable = false
+
+[node name="Logo" type="Sprite2D" parent="Floor"]
 position = Vector2(360, 360)
 scale = Vector2(4.6875, 4.6875)
 texture = ExtResource("2_xvgah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(359, 361.5)
+shape = SubResource("RectangleShape2D_x8y58")
+
+[node name="SpawnPath" type="Path2D" parent="."]
+position = Vector2(63.382, 50.5109)
+scale = Vector2(0.81713, 0.858696)
+curve = SubResource("Curve2D_himlg")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(795, -53)
+rotation = 1.56932
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_exited" from="Floor" to="." method="_on_floor_body_exited"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
