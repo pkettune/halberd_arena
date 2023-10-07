@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bss165o1gdb1g"]
+[gd_scene load_steps=7 format=3 uid="uid://bss165o1gdb1g"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fli1f"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="2_3ytr2"]
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_br26d"]
 [ext_resource type="Texture2D" uid="uid://s5ymxgirvhss" path="res://pictures/crosshair.png" id="5_sky78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcdnn"]
 size = Vector2(16, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y8mp"]
+size = Vector2(16.3516, 36.2708)
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
 script = ExtResource("1_fli1f")
@@ -23,6 +27,15 @@ shape = SubResource("RectangleShape2D_tcdnn")
 scale = Vector2(0.15625, 0.3125)
 texture = ExtResource("2_br26d")
 
+[node name="PlayerHurtBox" type="Area2D" parent="PlayerBody"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("2_3ytr2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerHurtBox"]
+position = Vector2(0.334019, 0.263596)
+shape = SubResource("RectangleShape2D_0y8mp")
+
 [node name="Crosshair" type="Node2D" parent="."]
 position = Vector2(-17.1026, -0.33371)
 scale = Vector2(2, 2)
@@ -34,3 +47,6 @@ texture = ExtResource("5_sky78")
 [node name="ShootPosition" type="Marker2D" parent="."]
 position = Vector2(11.5869, -0.00113487)
 scale = Vector2(1.1, 1.1)
+
+[connection signal="area_entered" from="PlayerBody/PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
+[connection signal="body_entered" from="PlayerBody/PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]

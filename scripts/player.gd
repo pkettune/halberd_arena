@@ -5,6 +5,7 @@ extends Node2D
 @export var aim_radius: int = 100
 
 var deadzone = 0.2
+var health = 3
 
 func _ready():
 	
@@ -31,3 +32,19 @@ func _physics_process(delta):
 	
 	crosshair.position = Vector2(aim_radius, 0)
 	
+
+
+func _on_player_hurt_box_area_entered(area):
+	print("ouch")
+	health -= 1
+
+	if health <= 0:
+		queue_free()
+
+#
+#func _on_player_hurt_box_body_entered(body):
+#	print("oof")
+#	health -= 1
+#
+#	if health <= 0:
+#		queue_free()
