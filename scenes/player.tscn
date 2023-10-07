@@ -9,7 +9,7 @@
 size = Vector2(16, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y8mp"]
-size = Vector2(16.3516, 36.2708)
+size = Vector2(14.7958, 28.8424)
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
 script = ExtResource("1_fli1f")
@@ -33,7 +33,7 @@ collision_mask = 4
 script = ExtResource("2_3ytr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerHurtBox"]
-position = Vector2(0.334019, 0.263596)
+position = Vector2(0.149494, 0.403629)
 shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="Crosshair" type="Node2D" parent="."]

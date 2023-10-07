@@ -1,16 +1,16 @@
 class_name Enemy
 extends CharacterBody2D
 
-@onready var animation := $AnimatedSprite2D
-
 var enemy = self
 
 @export var player_scene: PackedScene = preload("res://scenes/player.tscn")
-@onready var player = get_node("/root/Main/Player/")
 
+@onready var player = get_node("/root/Main/Player/")
+@onready var animation := $AnimatedSprite2D
+#@onready var dying_text := $DyingText
 
 @export var speed = 100
-@export var health = 10
+@export var health = 7
 
 func _physics_process(_delta):
 	
@@ -23,8 +23,9 @@ func _physics_process(_delta):
 		move_and_slide()
 
 func _on_area_entered(area):
-	animation.play("hurt")
 	health -= 1
 
 	if health <= 0:
+		animation.play("hurt")
+		await get_tree().create_timer(0.2).timeout
 		queue_free()

@@ -45,23 +45,18 @@ func _physics_process(delta):
 			$AudioStreamPlayer2D.play()
 		if (position <= Vector2(-25.0, 0.0)):
 			position = Vector2(-27.0, -0.5)
-			_on_animation_player_animation_finished("power_up")
 
 	if Input.is_action_just_released("throw"):
-		shoot(ProjectileScene)
-		anim_player.stop()
-		elapsed = 0.0
-		rotation = 0
+			shoot(ProjectileScene)
+			anim_player.stop()
+			elapsed = 0.0
+			rotation = 0
 
 func shoot(projectile:PackedScene) -> void:
 	var projectile_instance := projectile.instantiate()
 	projectile_instance.position = shoot_position.global_position
 	projectile_instance.direction = global_position.direction_to(projectile_instance.position)
 	add_child(projectile_instance)
-
-func _on_animation_player_animation_finished(_anim_name):
-	anim_player.speed_scale = 0
-
 
 func _on_power_timer_timeout():
 	pass

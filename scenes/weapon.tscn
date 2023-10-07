@@ -50,7 +50,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="WeaponSprite" type="Sprite2D" parent="Halberd"]
-position = Vector2(16, -15)
+position = Vector2(22, -19)
 texture = ExtResource("2_bj3mr")
 hframes = 8
 
@@ -61,7 +61,7 @@ monitoring = false
 script = ExtResource("3_yj8vd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Halberd/HitBox"]
-position = Vector2(17.0089, -12.9142)
+position = Vector2(24.3505, -18.2536)
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_7d643")
 
@@ -78,5 +78,4 @@ stream = ExtResource("3_vd3bw")
 [node name="PowerTimer" type="Timer" parent="."]
 wait_time = 0.7
 
-[connection signal="animation_finished" from="AnimationPlayer" to="Halberd" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="PowerTimer" to="." method="_on_power_timer_timeout"]

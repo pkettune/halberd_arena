@@ -7,3 +7,4 @@ extends Area2D
 
 func set_disabled(is_disabled: bool) -> void:
 	collision_shape.set_deferred("disabled", is_disabled)
+

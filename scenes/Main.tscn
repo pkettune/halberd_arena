@@ -18,7 +18,7 @@ script = ExtResource("1_3pofc")
 [node name="HUD" parent="." instance=ExtResource("3_exrj4")]
 
 [node name="Player" parent="." instance=ExtResource("2_8axoe")]
-position = Vector2(330, 289)
+position = Vector2(361, 384)
 
 [node name="Weapon" parent="Player" instance=ExtResource("5_67alg")]
 position = Vector2(-347, -370)
