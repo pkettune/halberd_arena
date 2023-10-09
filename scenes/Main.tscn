@@ -21,6 +21,6 @@ script = ExtResource("1_3pofc")
 position = Vector2(361, 384)
 
 [node name="Weapon" parent="Player" instance=ExtResource("5_67alg")]
-position = Vector2(-347, -370)
+rotation = -0.293723
 
 [node name="Projectile" parent="." instance=ExtResource("5_teihn")]

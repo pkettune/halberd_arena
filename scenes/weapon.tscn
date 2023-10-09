@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://7rotx6sj06c6"]
+[gd_scene load_steps=11 format=3 uid="uid://7rotx6sj06c6"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_vd6j2"]
 [ext_resource type="Texture2D" uid="uid://cbhu528f3l6kg" path="res://pictures/aurinkoon2.png" id="2_bj3mr"]
-[ext_resource type="AudioStream" uid="uid://cy7jwm7ncti62" path="res://bling2.wav" id="3_vd3bw"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yj8vd"]
+[ext_resource type="AudioStream" uid="uid://cv3nr35j7m0hu" path="res://sounds/bling3.wav" id="4_u4piw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d643"]
 radius = 11.0633
@@ -20,14 +20,96 @@ tracks/0/path = NodePath("WeaponSprite:frame")
 tracks/0/interp = 0
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0403099, 0.0814743, 0.120075, 0.156967, 0.193859, 0.232322, 0.269705, 0.308974, 0.347074, 0.386883, 0.429112, 0.477908, 0.539506, 0.593795),
+"times": PackedFloat32Array(0, 0.0403099, 0.0814743, 0.120075, 0.156967, 0.193859, 0.232322, 0.288, 0.336, 0.36, 0.408, 0.456, 0.504, 0.552, 0.621459),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 1, 2, 1, 3, 4, 3, 4, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_gi5r6"]
+resource_name = "attack"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0245131, 0.0405814, 0.051111, 0.0632517, 0.0736242, 0.0919135, 0.115774, 0.132421, 0.150406, 0.16699, 0.181278, 0.19841, 0.216342, 0.240732),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.62204, -2.62204), Vector2(-2.39418, -2.39417)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0245131, 0.0405814, 0.0522376, 0.0632517, 0.0736242, 0.0929349, 0.103482, 0.115774, 0.1314, 0.150406, 0.170054, 0.1823, 0.195346, 0.216942, 0.240732),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.293723, -0.60164, -1.05338, -1.33013, -1.74991, -0.630914, -0.440139, -0.0570483, 0.442079, 0.768959, 1.13683, 1.41468, 1.19089, 1.19089, 1.87727]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0245131, 0.0526167, 0.0652944, 0.0736242, 0.0919135, 0.113731, 0.129357, 0.148363, 0.171075, 0.180257, 0.195346, 0.215068, 0.240732),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_atu8b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.293723]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxikn"]
 _data = {
+"RESET": SubResource("Animation_atu8b"),
+"attack": SubResource("Animation_gi5r6"),
 "power_up": SubResource("Animation_g840r")
 }
 
@@ -43,19 +125,20 @@ func _process(delta):
 "
 
 [node name="Weapon" type="Node2D"]
+rotation = -0.293723
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
 [node name="WeaponSprite" type="Sprite2D" parent="Halberd"]
-position = Vector2(22, -19)
+position = Vector2(22, -18.8127)
 texture = ExtResource("2_bj3mr")
 hframes = 8
 
 [node name="HitBox" type="Area2D" parent="Halberd"]
-collision_layer = 18
+collision_layer = 2
 collision_mask = 4
 monitoring = false
 script = ExtResource("3_yj8vd")
@@ -73,7 +156,8 @@ libraries = {
 script = SubResource("GDScript_uxfir")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_vd3bw")
+stream = ExtResource("4_u4piw")
+volume_db = 5.193
 
 [node name="PowerTimer" type="Timer" parent="."]
 wait_time = 0.7

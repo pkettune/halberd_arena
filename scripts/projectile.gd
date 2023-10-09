@@ -1,6 +1,9 @@
 class_name Projectile
 extends Node2D
 
+@export var player_scene: PackedScene = preload("res://scenes/player.tscn")
+@onready var player = get_node("/root/Main/Player/")
+
 @onready var timer := $Timer
 @onready var hitbox := $HitBox
 @onready var sprite := $Sprite
@@ -23,5 +26,6 @@ func _physics_process(delta: float) -> void:
 #	rotation = global_rotation_degrees     PYÖRII KU VÄKKYRS
 
 func _on_impact_detector_body_entered(body):
+	await get_tree().create_timer(0.03).timeout
 	queue_free()
 	

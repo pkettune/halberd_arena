@@ -1,9 +1,11 @@
 extends Node2D
 
 @export var enemy_scene = preload("res://scenes/enemy.tscn")
+@export var player_scene = preload("res://scenes/player.tscn")
+
 
 func _on_floor_body_exited(body):
-	print("asdf")
+	body.queue_free()
 
 func _ready():
 	randomize()

@@ -4,10 +4,14 @@ extends Node2D
 @export var speed: int = 200
 @export var aim_radius: int = 100
 
+var screen_size = Vector2.ZERO
+
 var deadzone = 0.2
 var health = 3
 
 func _ready():
+	
+	screen_size = get_viewport_rect().size
 	
 	InputMap.action_set_deadzone("aim_up", deadzone)
 	InputMap.action_set_deadzone("aim_down", deadzone)
@@ -19,7 +23,7 @@ func _ready():
 	InputMap.action_set_deadzone("left", deadzone)
 	InputMap.action_set_deadzone("right", deadzone)
 
-func _physics_process(delta):
+func _process(delta):
 	var player_direction = Input.get_vector("left", "right", "up", "down")
 	position += player_direction * speed * delta
 
@@ -32,10 +36,18 @@ func _physics_process(delta):
 	
 	crosshair.position = Vector2(aim_radius, 0)
 	
+	position.x = clamp(position.x, 57, 663)
+	position.y = clamp(position.y, 62, 662)
 
 func _on_player_hurt_box_body_entered(body):
 	print("oof")
+	$PlayerBody/PlayerSprite.skew = 0.5
+	await get_tree().create_timer(0.25).timeout
+	$PlayerBody/PlayerSprite.skew = 0
 	health -= 1
 
-	if health <= 0:
-		queue_free()
+	if health == 0:
+		speed = 0
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(3.2).timeout
+		get_tree().reload_current_scene()
