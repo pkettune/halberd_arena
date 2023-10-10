@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgqmq6n48ndpq"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqmq6n48ndpq"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_o80ey"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_tfr72"]
@@ -33,13 +33,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in4ph"]
 size = Vector2(25.3333, 25.3333)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dydr7"]
-size = Vector2(24.6667, 24.6667)
-
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 4
-collision_mask = 51
+collision_mask = 19
 floor_stop_on_slope = false
 floor_block_on_wall = false
 platform_floor_layers = 0
@@ -51,20 +48,17 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_3i6eq")
 animation = &"hurt"
 
-[node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(32, 30)
-collision_layer = 32
-collision_mask = 3
+[node name="Hurtbox" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(160, 150)
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 18
 monitorable = false
 script = ExtResource("3_tfr72")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hurtbox"]
 position = Vector2(-32, -30)
 shape = SubResource("RectangleShape2D_in4ph")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.38419e-07)
-shape = SubResource("RectangleShape2D_dydr7")
 
 [node name="DyingText" type="Sprite2D" parent="."]
 visible = false
@@ -73,4 +67,5 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_hpli6")
 hframes = 3
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_area_entered"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_in4ph")

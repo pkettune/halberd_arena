@@ -14,6 +14,9 @@ script = ExtResource("1_3pofc")
 [node name="Arena" parent="." instance=ExtResource("1_y0b0d")]
 
 [node name="Enemy" parent="." instance=ExtResource("4_fobr8")]
+position = Vector2(320, -141)
+collision_layer = 0
+collision_mask = 0
 
 [node name="HUD" parent="." instance=ExtResource("3_exrj4")]
 
@@ -21,6 +24,5 @@ script = ExtResource("1_3pofc")
 position = Vector2(361, 384)
 
 [node name="Weapon" parent="Player" instance=ExtResource("5_67alg")]
-rotation = -0.293723
 
 [node name="Projectile" parent="." instance=ExtResource("5_teihn")]

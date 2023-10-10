@@ -10,7 +10,7 @@ var elapsed = 7
 #@onready var dying_text := $DyingText
 
 @export var speed = 100
-@export var health = 7
+@export var health = 6
 
 func _physics_process(_delta):
 	
@@ -22,18 +22,17 @@ func _physics_process(_delta):
 		look_at(player_position)
 		move_and_slide()
 
-func _on_area_entered(area):
+func take_damage(_damage: int) -> void:
+	health -= _damage
 	if health <= 0:
-		$AnimatedSprite2D.scale.x = 0.20
-		$AnimatedSprite2D.scale.y = 0.20
+		speed = 0
 		animation.play("hurt")
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.3).timeout
 		queue_free()
-
-	enemy.position = lerp(player.position, enemy.position, 1.5)
+		
+	enemy.position = lerp(player.position, enemy.position, 1.3)
 	$AnimatedSprite2D.scale.x = 0.18
 	$AnimatedSprite2D.scale.y = 0.18
 	await get_tree().create_timer(0.25).timeout
 	$AnimatedSprite2D.scale.x = 0.20
 	$AnimatedSprite2D.scale.y = 0.20
-	health -= 1

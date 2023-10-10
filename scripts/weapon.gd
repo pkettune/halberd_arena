@@ -16,13 +16,6 @@ var power_up_speed = 1.5
 func _ready():
 	position = Vector2.ZERO
 
-#func _init() -> void:
-# hurtbox should detect hits but not deal them. This variable does that.
-#	monitorable = false
-# This turns off collision layer  bit 1 and turns on bit 32 = layer 6.
-#	collision_mask = 32
-
-
 func _physics_process(delta):
 	$Halberd/HitBox.collision_layer = 0
 
@@ -70,7 +63,3 @@ func shoot(projectile:PackedScene) -> void:
 	projectile_instance.position = shoot_position.global_position
 	projectile_instance.direction = global_position.direction_to(projectile_instance.position)
 	add_child(projectile_instance)
-	
-
-func _on_power_timer_timeout():
-	pass

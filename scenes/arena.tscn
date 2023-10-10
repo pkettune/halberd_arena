@@ -16,8 +16,8 @@ point_count = 5
 script = ExtResource("1_vkwaa")
 
 [node name="Floor" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 5
+collision_layer = 0
+collision_mask = 36
 
 [node name="Logo" type="Sprite2D" parent="Floor"]
 position = Vector2(360, 360)
@@ -38,7 +38,7 @@ position = Vector2(795, -53)
 rotation = 1.56932
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.8
 autostart = true
 
 [connection signal="body_exited" from="Floor" to="." method="_on_floor_body_exited"]

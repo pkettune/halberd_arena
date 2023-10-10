@@ -10,7 +10,7 @@ extends Node2D
 @onready var impact_detector := $ImpactDetector
 
 @export var speed := 700.0
-@export var lifetime := 0.2
+@export var lifetime := 0.5
 var direction := Vector2.ZERO
 
 func _ready():
@@ -24,8 +24,3 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 #	rotation += 1						JA TÄMÄ
 #	rotation = global_rotation_degrees     PYÖRII KU VÄKKYRS
-
-func _on_impact_detector_body_entered(body):
-	await get_tree().create_timer(0.03).timeout
-	queue_free()
-	

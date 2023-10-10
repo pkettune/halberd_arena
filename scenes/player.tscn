@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bss165o1gdb1g"]
+[gd_scene load_steps=7 format=3 uid="uid://bss165o1gdb1g"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fli1f"]
-[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="2_3ytr2"]
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_br26d"]
 [ext_resource type="Texture2D" uid="uid://byleytitqfois" path="res://pictures/crosshair_green.png" id="4_5qwv0"]
 [ext_resource type="AudioStream" uid="uid://bifdita412fe0" path="res://sounds/död.wav" id="5_g78af"]
@@ -21,22 +20,22 @@ metadata/_edit_horizontal_guides_ = []
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
 collision_mask = 8
 
-[node name="PlayerHitbox" type="CollisionShape2D" parent="PlayerBody"]
+[node name="PlayerCollisionBox" type="CollisionShape2D" parent="PlayerBody"]
 position = Vector2(0.217798, -0.179246)
 shape = SubResource("RectangleShape2D_tcdnn")
+
+[node name="PlayerHurtBox" type="Area2D" parent="PlayerBody/PlayerCollisionBox"]
+position = Vector2(-0.217798, 0.179246)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerCollisionBox/PlayerHurtBox"]
+position = Vector2(-0.0163138, -0.0856018)
+shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="PlayerSprite" type="Sprite2D" parent="PlayerBody"]
 scale = Vector2(0.15625, 0.3125)
 texture = ExtResource("2_br26d")
-
-[node name="PlayerHurtBox" type="Area2D" parent="PlayerBody"]
-collision_layer = 32
-collision_mask = 12
-script = ExtResource("2_3ytr2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerHurtBox"]
-position = Vector2(-0.0163138, -0.0856018)
-shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="Crosshair" type="Node2D" parent="."]
 position = Vector2(-17.1026, -0.33371)
@@ -53,4 +52,4 @@ scale = Vector2(1.1, 1.1)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_g78af")
 
-[connection signal="body_entered" from="PlayerBody/PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]
+[connection signal="body_entered" from="PlayerBody/PlayerCollisionBox/PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]

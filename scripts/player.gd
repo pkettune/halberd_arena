@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var crosshair: Node
-@export var speed: int = 200
+@export var speed: int = 150
 @export var aim_radius: int = 100
 
 var screen_size = Vector2.ZERO
