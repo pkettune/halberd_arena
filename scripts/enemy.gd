@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var enemy = self
 var elapsed = 7
-@export var player_scene: PackedScene = preload("res://scenes/player.tscn")
+const player_scene: PackedScene = preload("res://scenes/player.tscn")
 
 @onready var player = get_node("/root/Main/Player/")
 @onready var animation := $AnimatedSprite2D
@@ -25,12 +25,13 @@ func _physics_process(_delta):
 func take_damage(_damage: int) -> void:
 	health -= _damage
 	if health <= 0:
+		collision_mask = 0
 		speed = 0
 		animation.play("hurt")
 		await get_tree().create_timer(0.3).timeout
 		queue_free()
 		
-	enemy.position = lerp(player.position, enemy.position, 1.3)
+	enemy.position = lerp(player.position, enemy.position, 1.22)
 	$AnimatedSprite2D.scale.x = 0.18
 	$AnimatedSprite2D.scale.y = 0.18
 	await get_tree().create_timer(0.25).timeout

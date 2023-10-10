@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var enemy_scene = preload("res://scenes/enemy.tscn")
-@export var player_scene = preload("res://scenes/player.tscn")
+const enemy_scene = preload("res://scenes/enemy.tscn")
+const player_scene = preload("res://scenes/player.tscn")
 
 
 func _on_floor_body_exited(body):

@@ -7,7 +7,6 @@ const ProjectileScene := preload("res://scenes/projectile.tscn")
 @onready var shoot_position = get_parent().get_node("ShootPosition")
 @onready var anim_player = $AnimationPlayer
 
-
 var elapsed = 0
 var speed = 300
 var throw_speed = 1
@@ -15,31 +14,19 @@ var power_up_speed = 1.5
 
 func _ready():
 	position = Vector2.ZERO
-
-func _physics_process(delta):
+	
+func attack():
+	$Halberd/HitBox.collision_layer = 16
+	anim_player.play("attack")
+	await get_tree().create_timer(0.05).timeout
 	$Halberd/HitBox.collision_layer = 0
 
-	if Input.is_action_just_pressed("melee"):
-		anim_player.speed_scale = 0.8
-		$Halberd/HitBox.collision_layer = 2
-		position = Vector2.ZERO
-		
-	if Input.is_action_pressed("melee"):
-		$Halberd/HitBox.collision_layer = 2
-		anim_player.play("attack")
-#		var min_angle = deg_to_rad(0.0)
-#		var max_angle = deg_to_rad(45.0)
-#		rotation = lerp_angle(min_angle, max_angle, elapsed)
-##		await get_tree().create_timer(0.25).timeout
-#		elapsed += 10 * delta
-
-	elif Input.is_action_just_released("melee"):
-		anim_player.stop()
-		elapsed = 0.0
-		rotation = 0
+func _physics_process(delta):
+	if player.health == 0:
+		set_physics_process(false)
 
 	if Input.is_action_pressed("throw"):
-		anim_player.speed_scale = 1
+		anim_player.speed_scale = 1.0
 		anim_player.play("power_up")
 		
 		elapsed += delta * 1
@@ -52,7 +39,8 @@ func _physics_process(delta):
 			position = Vector2(-32.0, -0.0)
 
 	if Input.is_action_just_released("throw"):
-		if anim_player.get_current_animation_position() >= 0.66:
+		position = Vector2.ZERO
+		if anim_player.get_current_animation_position() >= 0.67:
 			shoot(ProjectileScene)
 		anim_player.stop()
 		elapsed = 0.0

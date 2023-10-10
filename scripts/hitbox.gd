@@ -1,7 +1,7 @@
 class_name HBox
 extends Area2D
 
-@export var damage := 2
+@export var damage := 3
 
 @onready var collision_shape := $CollisionShape2D
 

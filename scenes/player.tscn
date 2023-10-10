@@ -6,10 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://bifdita412fe0" path="res://sounds/död.wav" id="5_g78af"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcdnn"]
-size = Vector2(17.2305, 35.2102)
+size = Vector2(15.9195, 33.1501)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y8mp"]
-size = Vector2(19.7589, 39.8924)
+size = Vector2(16.3878, 34.4611)
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
 script = ExtResource("1_fli1f")
@@ -18,10 +18,11 @@ aim_radius = 80
 metadata/_edit_horizontal_guides_ = []
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
-collision_mask = 8
+collision_layer = 0
+collision_mask = 0
 
 [node name="PlayerCollisionBox" type="CollisionShape2D" parent="PlayerBody"]
-position = Vector2(0.217798, -0.179246)
+position = Vector2(0.124269, -0.179183)
 shape = SubResource("RectangleShape2D_tcdnn")
 
 [node name="PlayerHurtBox" type="Area2D" parent="PlayerBody/PlayerCollisionBox"]
@@ -30,7 +31,7 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerCollisionBox/PlayerHurtBox"]
-position = Vector2(-0.0163138, -0.0856018)
+position = Vector2(0.0774477, 0.00810432)
 shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="PlayerSprite" type="Sprite2D" parent="PlayerBody"]
