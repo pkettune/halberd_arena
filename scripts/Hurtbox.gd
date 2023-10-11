@@ -9,8 +9,8 @@ extends Area2D
 # This turns off collision layer  bit 1 and turns on bit 32 = layer 6.
 #	collision_mask = 32
 
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
+#func _ready() -> void:
+#	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(hitbox: HBox) -> void:
 	if hitbox == null:

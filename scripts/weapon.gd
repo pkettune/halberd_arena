@@ -16,9 +16,9 @@ func _ready():
 	position = Vector2.ZERO
 	
 func attack():
-	$Halberd/HitBox.collision_layer = 16
 	anim_player.play("attack")
-	await get_tree().create_timer(0.05).timeout
+	$Halberd/HitBox.collision_layer = 16
+	await get_tree().create_timer(0.5).timeout
 	$Halberd/HitBox.collision_layer = 0
 
 func _physics_process(delta):

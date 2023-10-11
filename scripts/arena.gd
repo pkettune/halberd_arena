@@ -23,6 +23,6 @@ func _on_spawn_timer_timeout():
 	direction += randf_range(-PI / 4, PI / 4)
 	enemy.rotation = direction
 	
-	var velocity = Vector2(randf_range(20, 800), 0)
-	enemy.velocity = velocity.rotated(direction)
+#	var velocity = Vector2(randf_range(20, 800), 0)
+#	enemy.velocity = velocity.rotated(direction)
 	

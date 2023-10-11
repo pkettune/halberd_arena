@@ -31,7 +31,7 @@ func take_damage(_damage: int) -> void:
 		await get_tree().create_timer(0.3).timeout
 		queue_free()
 		
-	enemy.position = lerp(player.position, enemy.position, 1.22)
+	enemy.position = lerp(player.position, enemy.position, 1.6)
 	$AnimatedSprite2D.scale.x = 0.18
 	$AnimatedSprite2D.scale.y = 0.18
 	await get_tree().create_timer(0.25).timeout

@@ -29,7 +29,7 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee"):
 		weapon.attack()
-		
+
 func _process(delta):
 	var player_direction = Input.get_vector("left", "right", "up", "down")
 	position += player_direction * speed * delta
@@ -37,8 +37,8 @@ func _process(delta):
 	look_at(get_global_mouse_position())
 
 	var look_vector = Vector2.ZERO
-	look_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
-	look_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+	look_vector.x = Input.get_action_raw_strength("aim_right") - Input.get_action_raw_strength("aim_left")
+	look_vector.y = Input.get_action_raw_strength("aim_down") - Input.get_action_raw_strength("aim_up")
 	look_at(position + look_vector.normalized())
 	
 	crosshair.position = Vector2(aim_radius, 0)
@@ -55,7 +55,8 @@ func _on_player_hurt_box_body_entered(body):
 	health -= 1
 	if health == 0:
 		speed = 0
-		set_process(false)
+		get_tree().paused = true
 		$AudioStreamPlayer2D.play()
-		await get_tree().create_timer(3.2).timeout
+		await get_tree().create_timer(3.5).timeout
 		get_tree().reload_current_scene()
+		get_tree().paused = false

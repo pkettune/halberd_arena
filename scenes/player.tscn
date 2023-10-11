@@ -51,6 +51,7 @@ position = Vector2(11.5869, -0.00113487)
 scale = Vector2(1.1, 1.1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("5_g78af")
 
 [connection signal="body_entered" from="PlayerBody/PlayerCollisionBox/PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]

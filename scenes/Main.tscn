@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://debpemh102rl1"]
+[gd_scene load_steps=7 format=3 uid="uid://debpemh102rl1"]
 
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_3pofc"]
 [ext_resource type="PackedScene" uid="uid://bfj64ghpbakjs" path="res://scenes/arena.tscn" id="1_y0b0d"]
 [ext_resource type="PackedScene" uid="uid://bss165o1gdb1g" path="res://scenes/player.tscn" id="2_8axoe"]
 [ext_resource type="PackedScene" uid="uid://ds7ysl744osi7" path="res://scenes/HUD.tscn" id="3_exrj4"]
-[ext_resource type="PackedScene" uid="uid://cgqmq6n48ndpq" path="res://scenes/enemy.tscn" id="4_fobr8"]
 [ext_resource type="PackedScene" uid="uid://7rotx6sj06c6" path="res://scenes/weapon.tscn" id="5_67alg"]
 [ext_resource type="PackedScene" uid="uid://chcc0esdq1u3j" path="res://scenes/projectile.tscn" id="5_teihn"]
 
@@ -12,11 +11,6 @@
 script = ExtResource("1_3pofc")
 
 [node name="Arena" parent="." instance=ExtResource("1_y0b0d")]
-
-[node name="Enemy" parent="." instance=ExtResource("4_fobr8")]
-position = Vector2(320, -141)
-collision_layer = 0
-collision_mask = 0
 
 [node name="HUD" parent="." instance=ExtResource("3_exrj4")]
 

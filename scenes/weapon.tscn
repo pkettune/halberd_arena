@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://cv3nr35j7m0hu" path="res://sounds/bling3.wav" id="4_u4piw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d643"]
-radius = 10.8344
-height = 25.5098
+radius = 13.6473
+height = 41.2341
 
 [sub_resource type="Animation" id="Animation_atu8b"]
 length = 0.001
@@ -23,10 +23,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [-0.293723]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8.06975, -6.21569)]
+}
 
 [sub_resource type="Animation" id="Animation_gi5r6"]
 resource_name = "attack"
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,10 +46,22 @@ tracks/0/path = NodePath("..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00641352, 0.0395086, 0.0636215, 0.0893978, 0.132285, 0.171058, 0.199857),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.630914, 0.442079, 0.768959, 1.13683, 1.41468, 1.87727, -0.630914]
+"times": PackedFloat32Array(0.0506414, 0.15857, 0.256336, 0.280432, 0.303768, 0.370833, 0.393049, 0.4221, 0.449778, 0.477146),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 2,
+"values": [-0.630914, -1.60444, -1.60444, -1.18855, -0.844405, 0.190196, 0.931372, 1.69542, 1.92997, -0.630914]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0506414, 0.152588, 0.254627, 0.28385, 0.303768, 0.370833, 0.393049, 0.4221, 0.449778, 0.477146),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 2,
+"values": [Vector2(-1.97784, -1.97784), Vector2(-19.6628, -12.8187), Vector2(-19.6628, -12.8187), Vector2(-5.09257, -15.4645), Vector2(4.10138, -15.1717), Vector2(33.6792, -21.7368), Vector2(42.2254, -8.60641), Vector2(33.4391, 12.4589), Vector2(19.883, 8.04078), Vector2(-1.97784, -1.97784)]
 }
 
 [sub_resource type="Animation" id="Animation_g840r"]
@@ -77,26 +101,29 @@ func _process(delta):
 
 [node name="Weapon" type="Node2D"]
 position = Vector2(-1.97784, -1.97784)
-rotation = 0.501872
+rotation = -0.630914
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
+position = Vector2(-7.56619, 4.96915)
 collision_layer = 0
 collision_mask = 0
 
 [node name="WeaponSprite" type="Sprite2D" parent="Halberd"]
-position = Vector2(22, -18.8127)
+position = Vector2(31.9841, -25.2957)
 texture = ExtResource("2_bj3mr")
 hframes = 8
 
 [node name="HitBox" type="Area2D" parent="Halberd"]
+position = Vector2(9.98409, -6.48296)
 collision_layer = 0
 collision_mask = 36
 script = ExtResource("3_yj8vd")
+damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Halberd/HitBox"]
-position = Vector2(35.5435, -25.4934)
-rotation = 0.785397
+position = Vector2(33.2923, -28.9747)
+rotation = 0.799856
 shape = SubResource("CapsuleShape2D_7d643")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -108,5 +135,6 @@ libraries = {
 script = SubResource("GDScript_uxfir")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-13.5318, -10.2132)
 stream = ExtResource("4_u4piw")
 volume_db = 5.193
