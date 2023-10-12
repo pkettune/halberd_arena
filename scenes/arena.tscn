@@ -38,7 +38,7 @@ position = Vector2(795, -53)
 rotation = 1.56932
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.052
 autostart = true
 
 [connection signal="body_exited" from="Floor" to="." method="_on_floor_body_exited"]

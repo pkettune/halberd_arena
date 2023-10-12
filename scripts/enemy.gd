@@ -28,14 +28,12 @@ func take_damage(_damage: int) -> void:
 		animation.play("hurt")
 		await get_tree().create_timer(0.3).timeout
 		queue_free()
-		
+	
+	if _damage < 4:
+		enemy.position = lerp(player.position, enemy.position, 1.6)
+	
 	$AnimatedSprite2D.scale.x = 0.18
 	$AnimatedSprite2D.scale.y = 0.18
 	await get_tree().create_timer(0.25).timeout
 	$AnimatedSprite2D.scale.x = 0.20
 	$AnimatedSprite2D.scale.y = 0.20	
-
-
-
-func _on_weapon_pushback():
-	enemy.position = lerp(player.position, enemy.position, 1.6)
