@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://debpemh102rl1"]
+[gd_scene load_steps=8 format=3 uid="uid://debpemh102rl1"]
 
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_3pofc"]
 [ext_resource type="PackedScene" uid="uid://bfj64ghpbakjs" path="res://scenes/arena.tscn" id="1_y0b0d"]
 [ext_resource type="PackedScene" uid="uid://bss165o1gdb1g" path="res://scenes/player.tscn" id="2_8axoe"]
 [ext_resource type="PackedScene" uid="uid://ds7ysl744osi7" path="res://scenes/HUD.tscn" id="3_exrj4"]
-[ext_resource type="PackedScene" uid="uid://7rotx6sj06c6" path="res://scenes/weapon.tscn" id="5_67alg"]
+[ext_resource type="PackedScene" uid="uid://bwiw1yylos4gw" path="res://scenes/weapon.tscn" id="5_67alg"]
 [ext_resource type="PackedScene" uid="uid://chcc0esdq1u3j" path="res://scenes/projectile.tscn" id="5_teihn"]
+[ext_resource type="PackedScene" uid="uid://cgqmq6n48ndpq" path="res://scenes/enemy.tscn" id="7_wuif2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3pofc")
@@ -20,3 +21,6 @@ position = Vector2(361, 384)
 [node name="Weapon" parent="Player" instance=ExtResource("5_67alg")]
 
 [node name="Projectile" parent="." instance=ExtResource("5_teihn")]
+
+[node name="Enemy" parent="." instance=ExtResource("7_wuif2")]
+visible = false

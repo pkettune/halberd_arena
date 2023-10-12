@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqmq6n48ndpq"]
+[gd_scene load_steps=8 format=3 uid="uid://cgqmq6n48ndpq"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_o80ey"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_tfr72"]
 [ext_resource type="Texture2D" uid="uid://mglti6ybt4m4" path="res://pictures/enemy_damage_sheet.png" id="4_2n0up"]
-[ext_resource type="Texture2D" uid="uid://db1k5a0cer6fg" path="res://pictures/enemy_die_text.png" id="4_hpli6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptoty"]
 atlas = ExtResource("4_2n0up")
@@ -31,12 +30,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in4ph"]
-size = Vector2(8.63636, 10)
+size = Vector2(9.77272, 10)
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 4
-collision_mask = 19
+collision_mask = 17
 script = ExtResource("1_o80ey")
 speed = 140
 
@@ -54,22 +53,15 @@ collision_mask = 16
 script = ExtResource("3_tfr72")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hurtbox"]
-position = Vector2(-31.975, -31)
+position = Vector2(-31.975, -29.75)
 rotation = 1.5708
 scale = Vector2(2.2, 2.2)
 shape = SubResource("RectangleShape2D_in4ph")
 
-[node name="DyingText" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -6.55)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_hpli6")
-hframes = 3
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.333333, -1.50463e-36)
+position = Vector2(-0.249995, 0.0249888)
+rotation = -3.14159
 scale = Vector2(2.2, 2.2)
 shape = SubResource("RectangleShape2D_in4ph")
 
-[connection signal="area_entered" from="AnimatedSprite2D/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite2D/Hurtbox" to="AnimatedSprite2D/Hurtbox" method="_on_area_entered"]

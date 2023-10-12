@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://7rotx6sj06c6"]
+[gd_scene load_steps=10 format=3 uid="uid://bwiw1yylos4gw"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_vd6j2"]
 [ext_resource type="Texture2D" uid="uid://cbhu528f3l6kg" path="res://pictures/aurinkoon2.png" id="2_bj3mr"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yj8vd"]
+[ext_resource type="Script" path="res://scripts/melee_hitbox.gd" id="3_okgc3"]
 [ext_resource type="AudioStream" uid="uid://cv3nr35j7m0hu" path="res://sounds/bling3.wav" id="4_u4piw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d643"]
@@ -100,20 +100,9 @@ _data = {
 "power_up": SubResource("Animation_g840r")
 }
 
-[sub_resource type="GDScript" id="GDScript_uxfir"]
-script/source = "extends AnimationPlayer
-
-var anim_speed_scale: float = 1.0
-
-func _process(delta):
-	if Input.is_action_pressed(\"throw\"):
-		play(\"power_up\")
-
-"
-
 [node name="Weapon" type="Node2D"]
-position = Vector2(69, -4)
-rotation = 0.935996
+position = Vector2(-8.06975, -6.21569)
+rotation = -0.293723
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
@@ -128,10 +117,9 @@ hframes = 8
 
 [node name="HitBox" type="Area2D" parent="Halberd"]
 position = Vector2(9.98409, -6.48296)
-collision_layer = 16
+collision_layer = 0
 collision_mask = 0
-script = ExtResource("3_yj8vd")
-damage = null
+script = ExtResource("3_okgc3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Halberd/HitBox"]
 position = Vector2(27.7878, -20.9499)
@@ -144,7 +132,6 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_vxikn")
 }
-script = SubResource("GDScript_uxfir")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-13.5318, -10.2132)

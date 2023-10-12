@@ -52,7 +52,7 @@ func _process(delta):
 	position.x = clamp(position.x, 57, 663)
 	position.y = clamp(position.y, 62, 662)
 
-func _on_player_hurt_box_body_entered(body):
+func _on_player_hurt_box_body_entered(_body):
 	print("oof")
 	$PlayerBody/PlayerSprite.skew = 0.5
 	await get_tree().create_timer(0.25).timeout

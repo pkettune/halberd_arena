@@ -1,4 +1,4 @@
-class_name HBox
+class_name MeleeHitBox
 extends Area2D
 
 @export var damage := 3
