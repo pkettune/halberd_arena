@@ -11,6 +11,8 @@ var screen_size = Vector2.ZERO
 var deadzone = 0.2
 var health = 3
 
+var look_vector = Vector2.ZERO
+
 
 func _ready():
 	
@@ -28,18 +30,22 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee"):
+#		look_vector.x = false
+#		look_vector.y = false
 		weapon.attack()
 
 func _process(delta):
 	var player_direction = Input.get_vector("left", "right", "up", "down")
 	position += player_direction * speed * delta
+	
+	if Input.get_last_mouse_velocity():
+		look_at(get_global_mouse_position())
+	else:
+		look_vector.x = Input.get_action_raw_strength("aim_right") - Input.get_action_raw_strength("aim_left")
+		look_vector.y = Input.get_action_raw_strength("aim_down") - Input.get_action_raw_strength("aim_up")
+		look_at(position + look_vector.normalized())
+		
 
-	look_at(get_global_mouse_position())
-
-	var look_vector = Vector2.ZERO
-	look_vector.x = Input.get_action_raw_strength("aim_right") - Input.get_action_raw_strength("aim_left")
-	look_vector.y = Input.get_action_raw_strength("aim_down") - Input.get_action_raw_strength("aim_up")
-	look_at(position + look_vector.normalized())
 	
 	crosshair.position = Vector2(aim_radius, 0)
 	

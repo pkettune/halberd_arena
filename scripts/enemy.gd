@@ -22,6 +22,17 @@ func _physics_process(_delta):
 		look_at(player_position)
 		move_and_slide()
 
+var knockback_dir
+var knockback
+
+func _on_hurtbox_area_entered(area):
+	enemy.position = lerp(player.position, enemy.position, 1.6)
+	$AnimatedSprite2D.scale.x = 0.18
+	$AnimatedSprite2D.scale.y = 0.18
+	await get_tree().create_timer(0.25).timeout
+	$AnimatedSprite2D.scale.x = 0.20
+	$AnimatedSprite2D.scale.y = 0.20	
+	
 func take_damage(_damage: int) -> void:
 	health -= _damage
 	if health <= 0:
@@ -30,10 +41,4 @@ func take_damage(_damage: int) -> void:
 		animation.play("hurt")
 		await get_tree().create_timer(0.3).timeout
 		queue_free()
-		
-	enemy.position = lerp(player.position, enemy.position, 1.6)
-	$AnimatedSprite2D.scale.x = 0.18
-	$AnimatedSprite2D.scale.y = 0.18
-	await get_tree().create_timer(0.25).timeout
-	$AnimatedSprite2D.scale.x = 0.20
-	$AnimatedSprite2D.scale.y = 0.20
+

@@ -7,9 +7,8 @@ const ProjectileScene := preload("res://scenes/projectile.tscn")
 @onready var shoot_position = get_parent().get_node("ShootPosition")
 @onready var anim_player = $AnimationPlayer
 
-var elapsed = 0
+var elapsed : float = 0
 var speed = 300
-var throw_speed = 1
 var power_up_speed = 1.5
 
 func _ready():
@@ -17,10 +16,7 @@ func _ready():
 	
 func attack():
 	anim_player.play("attack")
-	$Halberd/HitBox.collision_layer = 16
-	await get_tree().create_timer(0.5).timeout
-	$Halberd/HitBox.collision_layer = 0
-
+	
 func _physics_process(delta):
 	if player.health == 0:
 		set_physics_process(false)

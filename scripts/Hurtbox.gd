@@ -20,4 +20,3 @@ func _on_area_entered(hitbox: HBox) -> void:
 		owner.take_damage(hitbox.damage)
 		print("damage")
 
-

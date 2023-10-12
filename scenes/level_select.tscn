@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bv6lk6oao6xmr" path="res://pictures/enemy.png" id="2_bd8he"]
 [ext_resource type="Texture2D" uid="uid://dgybt6bww57u6" path="res://pictures/enemy_damage.png" id="3_p2b8h"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="4_mh1jo"]
-[ext_resource type="Script" path="res://scenes/Camera.gd" id="5_yqd82"]
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="5_yqd82"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yfh0r"]
 load_path = "res://.godot/imported/icon.svg-78bd6378513f874a6ad467169c3a60fa.ctex"
