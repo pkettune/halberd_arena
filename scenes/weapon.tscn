@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d643"]
 radius = 13.6473
-height = 41.2341
+height = 63.4577
 
 [sub_resource type="Animation" id="Animation_atu8b"]
 length = 0.001
@@ -46,10 +46,10 @@ tracks/0/path = NodePath("..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0506414, 0.15857, 0.256336, 0.280432, 0.303768, 0.370833, 0.393049, 0.4221, 0.449778, 0.477146),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0506414, 0.15857, 0.256336, 0.280432, 0.303768, 0.370833, 0.392028, 0.39221, 0.4221, 0.449778, 0.477146),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 2,
-"values": [-0.630914, -1.60444, -1.60444, -1.18855, -0.844405, 0.190196, 0.931372, 1.69542, 1.92997, -0.630914]
+"values": [-0.630914, -1.60444, -1.60444, -1.18855, -0.844405, 0.190196, 0.931372, 0.935996, 1.69542, 1.92997, -0.630914]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -58,10 +58,10 @@ tracks/1/path = NodePath("..:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0506414, 0.152588, 0.254627, 0.28385, 0.303768, 0.370833, 0.393049, 0.4221, 0.449778, 0.477146),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0506414, 0.152588, 0.254627, 0.28385, 0.303768, 0.370833, 0.39221, 0.393049, 0.4221, 0.449778, 0.477146),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 2,
-"values": [Vector2(-1.97784, -1.97784), Vector2(-19.6628, -12.8187), Vector2(-19.6628, -12.8187), Vector2(-5.09257, -15.4645), Vector2(4.10138, -15.1717), Vector2(33.6792, -21.7368), Vector2(42.2254, -8.60641), Vector2(33.4391, 12.4589), Vector2(19.883, 8.04078), Vector2(-1.97784, -1.97784)]
+"values": [Vector2(-1.97784, -1.97784), Vector2(-19.6628, -12.8187), Vector2(-19.6628, -12.8187), Vector2(-5.09257, -15.4645), Vector2(4.10138, -15.1717), Vector2(33.6792, -21.7368), Vector2(69, -4), Vector2(42.2254, -8.60641), Vector2(33.4391, 12.4589), Vector2(19.883, 8.04078), Vector2(-1.97784, -1.97784)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -112,8 +112,8 @@ func _process(delta):
 "
 
 [node name="Weapon" type="Node2D"]
-position = Vector2(28.0687, 10.7086)
-rotation = 1.78834
+position = Vector2(69, -4)
+rotation = 0.935996
 script = ExtResource("1_vd6j2")
 
 [node name="Halberd" type="CharacterBody2D" parent="."]
@@ -128,13 +128,13 @@ hframes = 8
 
 [node name="HitBox" type="Area2D" parent="Halberd"]
 position = Vector2(9.98409, -6.48296)
-collision_layer = 0
+collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_yj8vd")
 damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Halberd/HitBox"]
-position = Vector2(33.2923, -28.9747)
+position = Vector2(27.7878, -20.9499)
 rotation = 0.799856
 shape = SubResource("CapsuleShape2D_7d643")
 

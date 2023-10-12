@@ -2,7 +2,6 @@ class_name Enemy
 extends CharacterBody2D
 
 var enemy = self
-var elapsed = 7
 const player_scene: PackedScene = preload("res://scenes/player.tscn")
 
 @onready var player = get_node("/root/Main/Player/")
@@ -26,7 +25,7 @@ var knockback_dir
 var knockback
 
 func _on_hurtbox_area_entered(area):
-	enemy.position = lerp(player.position, enemy.position, 1.6)
+#	enemy.position = lerp(player.position, enemy.position, 1.6)
 	$AnimatedSprite2D.scale.x = 0.18
 	$AnimatedSprite2D.scale.y = 0.18
 	await get_tree().create_timer(0.25).timeout
