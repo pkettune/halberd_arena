@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://debpemh102rl1"]
+[gd_scene load_steps=7 format=3 uid="uid://caaqqn3x42u1u"]
 
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_3pofc"]
 [ext_resource type="PackedScene" uid="uid://bfj64ghpbakjs" path="res://scenes/arena.tscn" id="1_y0b0d"]
 [ext_resource type="PackedScene" uid="uid://bss165o1gdb1g" path="res://scenes/player.tscn" id="2_8axoe"]
-[ext_resource type="PackedScene" uid="uid://ds7ysl744osi7" path="res://scenes/HUD.tscn" id="3_exrj4"]
-[ext_resource type="PackedScene" uid="uid://bwiw1yylos4gw" path="res://scenes/weapon.tscn" id="5_67alg"]
-[ext_resource type="PackedScene" uid="uid://chcc0esdq1u3j" path="res://scenes/projectile.tscn" id="5_teihn"]
-[ext_resource type="PackedScene" uid="uid://cgqmq6n48ndpq" path="res://scenes/enemy.tscn" id="7_wuif2"]
+[ext_resource type="PackedScene" uid="uid://ds7ysl744osi7" path="res://scenes/hud.tscn" id="3_exrj4"]
+[ext_resource type="PackedScene" uid="uid://vuktef843efm" path="res://scenes/weapon.tscn" id="5_67alg"]
+[ext_resource type="PackedScene" uid="uid://deoq7cuk1v6tk" path="res://scenes/spawner.tscn" id="6_dkgw1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3pofc")
@@ -14,13 +13,13 @@ script = ExtResource("1_3pofc")
 [node name="Arena" parent="." instance=ExtResource("1_y0b0d")]
 
 [node name="HUD" parent="." instance=ExtResource("3_exrj4")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_8axoe")]
 position = Vector2(361, 384)
+speed = 250
 
 [node name="Weapon" parent="Player" instance=ExtResource("5_67alg")]
+position = Vector2(-1.97784, -1.97784)
 
-[node name="Projectile" parent="." instance=ExtResource("5_teihn")]
-
-[node name="Enemy" parent="." instance=ExtResource("7_wuif2")]
-visible = false
+[node name="Spawner" parent="." instance=ExtResource("6_dkgw1")]

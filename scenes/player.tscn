@@ -1,42 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://bss165o1gdb1g"]
+[gd_scene load_steps=6 format=3 uid="uid://bss165o1gdb1g"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fli1f"]
 [ext_resource type="Texture2D" uid="uid://barb5gwt3xaqt" path="res://pictures/icon.svg" id="2_br26d"]
 [ext_resource type="Texture2D" uid="uid://byleytitqfois" path="res://pictures/crosshair_green.png" id="4_5qwv0"]
 [ext_resource type="AudioStream" uid="uid://bifdita412fe0" path="res://sounds/död.wav" id="5_g78af"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcdnn"]
-size = Vector2(15.9195, 33.1501)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y8mp"]
 size = Vector2(16.3878, 34.4611)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("crosshair")]
-script = ExtResource("1_fli1f")
-crosshair = NodePath("Crosshair/CrosshairSprite")
-aim_radius = 80
-metadata/_edit_horizontal_guides_ = []
-
-[node name="PlayerBody" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("crosshair")]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_fli1f")
+crosshair = NodePath("Crosshair")
 
-[node name="PlayerCollisionBox" type="CollisionShape2D" parent="PlayerBody"]
-position = Vector2(0.124269, -0.179183)
-shape = SubResource("RectangleShape2D_tcdnn")
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.15625, 0.3125)
+texture = ExtResource("2_br26d")
 
-[node name="PlayerHurtBox" type="Area2D" parent="PlayerBody/PlayerCollisionBox"]
-position = Vector2(-0.217798, 0.179246)
-collision_layer = 32
-collision_mask = 4
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+position = Vector2(-0.093529, 6.29872e-05)
+collision_layer = 4
+collision_mask = 8
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerCollisionBox/PlayerHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 position = Vector2(0.0774477, 0.00810432)
 shape = SubResource("RectangleShape2D_0y8mp")
 
-[node name="PlayerSprite" type="Sprite2D" parent="PlayerBody"]
-scale = Vector2(0.15625, 0.3125)
-texture = ExtResource("2_br26d")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0160813, 0.00816731)
+shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="Crosshair" type="Node2D" parent="."]
 position = Vector2(-17.1026, -0.33371)
@@ -54,4 +48,4 @@ scale = Vector2(1.1, 1.1)
 process_mode = 3
 stream = ExtResource("5_g78af")
 
-[connection signal="body_entered" from="PlayerBody/PlayerCollisionBox/PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]
+[connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

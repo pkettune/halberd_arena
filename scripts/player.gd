@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @onready var weapon = $Weapon
 
@@ -8,8 +8,8 @@ extends Node2D
 
 var screen_size = Vector2.ZERO
 
-var deadzone = 0.2
 var health = 3
+var deadzone = 0.2
 
 var look_vector = Vector2.ZERO
 
@@ -52,14 +52,14 @@ func _process(delta):
 	position.x = clamp(position.x, 57, 663)
 	position.y = clamp(position.y, 62, 662)
 
-func _on_player_hurt_box_body_entered(_body):
-	print("oof")
-	$PlayerBody/PlayerSprite.skew = 0.5
-	await get_tree().create_timer(0.25).timeout
-	$PlayerBody/PlayerSprite.skew = 0
-	
+func _on_player_hurt_box_area_entered(area):
 	health -= 1
-	if health == 0:
+	print("oof")
+	$PlayerSprite.skew = 0.5
+	await get_tree().create_timer(0.25).timeout
+	$PlayerSprite.skew = 0
+
+	if health <= 0:
 		speed = 0
 		get_tree().paused = true
 		$AudioStreamPlayer2D.play()

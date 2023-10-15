@@ -3,7 +3,6 @@ extends Node2D
 
 const ProjectileScene := preload("res://scenes/projectile.tscn")
 
-@onready var player = get_parent().get_parent().get_node("Player")
 @onready var shoot_position = get_parent().get_node("ShootPosition")
 @onready var anim_player = $AnimationPlayer
 
@@ -18,8 +17,6 @@ func attack():
 	anim_player.play("attack")
 	
 func _physics_process(delta):
-	if player.health == 0:
-		set_physics_process(false)
 
 	if Input.is_action_pressed("throw"):
 		anim_player.speed_scale = 1.0

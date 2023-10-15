@@ -1,14 +1,9 @@
 class_name Projectile
 extends Node2D
 
-@export var player_scene: PackedScene = preload("res://scenes/player.tscn")
-@onready var player = get_node("/root/Main/Player/")
-
-@onready var hitbox := $HitBox
-@onready var sprite := $Sprite
-
 @export var speed := 700.0
 @export var lifetime := 0.5
+
 var direction := Vector2.ZERO
 
 func _ready():

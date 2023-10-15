@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_vhnxs"]
 [ext_resource type="Texture2D" uid="uid://bcgadixvfrpv" path="res://pictures/aurinkoon3.png" id="2_506mh"]
-[ext_resource type="Script" path="res://scripts/projectile_hitbox.gd" id="3_df8ya"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_uocq2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvkbn"]
 radius = 2.11649
 height = 67.6168
 
 [node name="Spear" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 20
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_vhnxs")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -19,9 +19,11 @@ texture = ExtResource("2_506mh")
 
 [node name="HitBox" type="Area2D" parent="."]
 rotation = 1.5708
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("3_df8ya")
+collision_layer = 2
+collision_mask = 8
+monitoring = false
+script = ExtResource("3_uocq2")
+damage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.109347, 0.398274)
