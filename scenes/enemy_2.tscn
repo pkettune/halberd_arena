@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgqmq6n48ndpq"]
+[gd_scene load_steps=8 format=3 uid="uid://dm156bpk3s8ge"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_o80ey"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_k2tvo"]
-[ext_resource type="Texture2D" uid="uid://mglti6ybt4m4" path="res://pictures/enemy_damage_sheet.png" id="4_2n0up"]
+[ext_resource type="Script" path="res://scripts/enemy_2.gd" id="1_tnor6"]
+[ext_resource type="Texture2D" uid="uid://bd5ciwflywbbi" path="res://pictures/enemy_2.png" id="2_ct8ts"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_ydq4s"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8tfhh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvevi"]
 
 [sub_resource type="Animation" id="Animation_exx27"]
 resource_name = "hurt"
@@ -26,21 +26,21 @@ _data = {
 "hurt": SubResource("Animation_exx27")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5chh6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cru50"]
 radius = 16.9535
 
-[node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(1.2, 1.2)
+[node name="Enemy2" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 collision_mask = 0
-script = ExtResource("1_o80ey")
-speed = 140
+script = ExtResource("1_tnor6")
+health = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8tfhh")
+shape = SubResource("CircleShape2D_hvevi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.34, 0.34)
-texture = ExtResource("4_2n0up")
+texture = ExtResource("2_ct8ts")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -54,12 +54,12 @@ rotation = 1.5708
 scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("3_k2tvo")
+script = ExtResource("3_ydq4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-32, -30)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CircleShape2D_5chh6")
+position = Vector2(-31.8629, -30)
+scale = Vector2(0.906788, 1)
+shape = SubResource("CircleShape2D_cru50")
 debug_color = Color(0, 0.627451, 0.505882, 0.419608)
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

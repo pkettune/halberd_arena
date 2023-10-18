@@ -16,3 +16,11 @@ func _physics_process(delta: float) -> void:
 	queue_free()
 #	rotation += 1						JA TÄMÄ
 #	rotation = global_rotation_degrees     PYÖRII KU VÄKKYRS
+
+
+func _on_hit_box_body_entered(body):
+	queue_free()
+
+
+func _on_hit_box_area_entered(area):
+	queue_free()

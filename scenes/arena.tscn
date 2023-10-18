@@ -10,10 +10,6 @@ size = Vector2(604, 601)
 script = ExtResource("1_vkwaa")
 
 [node name="Floor" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
-monitoring = false
-monitorable = false
 
 [node name="Logo" type="Sprite2D" parent="Floor"]
 position = Vector2(360, 360)

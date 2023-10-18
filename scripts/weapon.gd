@@ -16,12 +16,14 @@ func _ready():
 func attack():
 	anim_player.play("attack")
 	
+func _input(_event):
+	if Input.is_action_just_pressed("throw"):
+		anim_player.speed_scale = 1.0
+		anim_player.play("power_up")
+	
 func _physics_process(delta):
 
 	if Input.is_action_pressed("throw"):
-		anim_player.speed_scale = 1.0
-		anim_player.play("power_up")
-		
 		elapsed += delta * 1
 		rotation_degrees = 45
 		

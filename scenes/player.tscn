@@ -18,6 +18,10 @@ crosshair = NodePath("Crosshair")
 scale = Vector2(0.15625, 0.3125)
 texture = ExtResource("2_br26d")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0160813, 0.00816731)
+shape = SubResource("RectangleShape2D_0y8mp")
+
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 position = Vector2(-0.093529, 6.29872e-05)
 collision_layer = 4
@@ -26,10 +30,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 position = Vector2(0.0774477, 0.00810432)
-shape = SubResource("RectangleShape2D_0y8mp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.0160813, 0.00816731)
 shape = SubResource("RectangleShape2D_0y8mp")
 
 [node name="Crosshair" type="Node2D" parent="."]
