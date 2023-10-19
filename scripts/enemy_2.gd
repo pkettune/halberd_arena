@@ -11,7 +11,7 @@ func take_damage(_damage: int, knockback_strength : Vector2, stop_time : float =
 	health -= _damage
 	
 	if (knockback_strength != Vector2.ZERO):
-		knockback = -knockback_strength * 4
+		knockback = -knockback_strength * 2
 		knockbackTween = get_tree().create_tween()
 		knockbackTween.parallel().tween_property(self, "knockback", Vector2.ZERO, stop_time)
 	if health <= 0:

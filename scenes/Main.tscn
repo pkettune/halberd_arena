@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://caaqqn3x42u1u"]
+[gd_scene load_steps=7 format=3 uid="uid://caaqqn3x42u1u"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jr10n"]
 [ext_resource type="PackedScene" uid="uid://bfj64ghpbakjs" path="res://scenes/arena.tscn" id="1_y0b0d"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://vuktef843efm" path="res://scenes/weapon.tscn" id="5_67alg"]
 [ext_resource type="PackedScene" uid="uid://dnlnoj8jbvuor" path="res://scenes/pause_menu.tscn" id="6_4devm"]
 [ext_resource type="PackedScene" uid="uid://deoq7cuk1v6tk" path="res://scenes/spawner.tscn" id="6_dkgw1"]
-[ext_resource type="PackedScene" uid="uid://dm156bpk3s8ge" path="res://scenes/enemy_2.tscn" id="7_mpjaf"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jr10n")
@@ -29,7 +28,6 @@ size_flags_horizontal = 0
 
 [node name="Spawner" parent="." instance=ExtResource("6_dkgw1")]
 
-[node name="Enemy2" parent="." instance=ExtResource("7_mpjaf")]
-
+[editable path="Player"]
 [editable path="PauseMenu"]
 [editable path="Spawner"]

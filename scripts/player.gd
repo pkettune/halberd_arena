@@ -63,3 +63,9 @@ func _on_player_hurt_box_area_entered(_area):
 		await get_tree().create_timer(3.5).timeout
 		get_tree().reload_current_scene()
 		get_tree().paused = false
+	
+
+
+func _on_player_hurt_box_body_entered(body):
+	if owner.has_method("take_damage"):
+		owner.take_damage(1, body.velocity)
